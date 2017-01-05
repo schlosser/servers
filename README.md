@@ -3,10 +3,10 @@ How I run my servers
 
 ## Important Directories / Files
 
-- **`/etc/nginx/`: ** Everything related to Nginx configuration lives in this folder.
-- **`/etc/nginx/nginx.conf`: ** The basic Nginx configurations.
-- **`/etc/nginx/sites-available`: ** A folder full of Nginx configuration files that may or may not be enabled.
-- **`/etc/nginx/sites-enabled`: ** A list of symlinks to files in `/etc/nginx/sites-available`.  The configuration files in this folder are active in Nginx.  To disable a configuration file, delete the symlink in this folder.
+- **`/etc/nginx/`:** Everything related to Nginx configuration lives in this folder.
+- **`/etc/nginx/nginx.conf`:** The basic Nginx configurations.
+- **`/etc/nginx/sites-available`:** A folder full of Nginx configuration files that may or may not be enabled.
+- **`/etc/nginx/sites-enabled`:** A list of symlinks to files in `/etc/nginx/sites-available`.  The configuration files in this folder are active in Nginx.  To disable a configuration file, delete the symlink in this folder.
 - **`/srv/`:** The root folder for all of the server's websites.
 - **`/srv/schlosser.io`:** The folder for a particular website, in this case [schlosser.io][schlosser].
 - **`/srv/schlosser.io/logs`:** The folder where all of a [schlosser.io][schlosser]'s logs should go.

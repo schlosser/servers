@@ -98,6 +98,8 @@ _This example is for adding a new subdomain, new.schlosser.io._
     my-website:/etc/nginx/sites-available$ touch new.schlosser.io.nginx.conf
     ```
 
+    > **Tip:** You can skip this step if you want to just edit an existing configuration file.
+
 4. Edit it (with sudo!) to add the necessary server blocks.
 
     **Example for a basic static site served over HTTP:**
@@ -127,6 +129,8 @@ _This example is for adding a new subdomain, new.schlosser.io._
     my-website:/etc/nginx/sites-available$ cd /etc/nginx/sites-enabled
     my-website:/etc/nginx/sites-enabled$ ln -s /etc/nginx/sites-enabled/new.schlosser.io.nginx.conf new.schlosser.io.nginx.conf 
     ```
+
+    > **Tip:** You can skip this step if you want to just edit an existing configuration file.
 
 6. Test your Nginx configuration to ensure it's properly written. Ensure that you get a message as follows: 
 

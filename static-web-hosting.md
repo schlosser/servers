@@ -1,6 +1,26 @@
 # Static Web Hosting
 This document describes how I host static websites 
 
+## A note about syntax in this tutorial:
+
+When I instruct you to write a terminal command, I write them out in a very verbose way. Because we're dealing with both a server, a local machine, and a variety of folders, I use this syntax:
+
+```bash
+[machine-name]:[folder]$ [command]
+```
+
+For example, to get into the `/srv/` folder on your server, you might start by running the `ssh` command on your local machine, from the home directory:
+
+```bash
+localmachine:~$ ssh my-website
+```
+
+And then, changing directory to the `/srv/` folder once you're on the server:
+
+```bash
+my-website:~$ cd /srv/
+```
+
 ## Important Directories / Files
 
 - **`/etc/nginx/`:** Everything related to Nginx configuration lives in this folder.

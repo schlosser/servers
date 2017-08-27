@@ -1,6 +1,27 @@
 # Flask
 This tutorial describes how I host Flask on a web server.
 
+## A note about syntax in this tutorial:
+
+When I instruct you to write a terminal command, I write them out in a very verbose way. Because we're dealing with both a server, a local machine, and a variety of folders, I use this syntax:
+
+```bash
+[machine-name]:[folder]$ [command]
+```
+
+For example, to get into the `/srv/` folder on your server, you might start by running the `ssh` command on your local machine, from the home directory:
+
+```bash
+localmachine:~$ ssh my-website
+```
+
+And then, changing directory to the `/srv/` folder once you're on the server:
+
+```bash
+my-website:~$ cd /srv/
+```
+
+
 ## Important Directories / Files
 
 - **`/etc/nginx/`:** Everything related to Nginx configuration lives in this folder.
@@ -44,7 +65,7 @@ _Requires the "Setting up SSH key access to your sever" section to be complete._
 On your local machine, in the git repo for your project, add a new git remote to push to. Assuming that `origin` is set to your GitHub URL, add a new origin called `deploy` that's pushed to your server:
 
 ```bash
-$ git remote add deploy my-website:~/git/mywebsite.com.git
+localmachine:~/mywebsite$ git remote add deploy my-website:~/git/mywebsite.com.git
 ```
 
 > Be sure to replace `my-website` the the server alias you chose in the first section, and `mywebsite.com.git` to the name of your git repo that you made while configuring the server.
@@ -52,7 +73,7 @@ $ git remote add deploy my-website:~/git/mywebsite.com.git
 That's it! You should be ready to push just using `git`:
 
 ```bash
-$ git push deploy master
+localmachine:~/mywebsite$ git push deploy master
 ```
 
 ## Setup the server to run Flask the first time.

@@ -217,13 +217,11 @@ _Here, we'll be setting up a server, fresh. It will be configured for a fake web
     fi
     ############################# End Repeat ############################# 
     
-    echo   "----------------------------------"
+    echo   "-----------------------------------------------"
     echo   "Deployment Complete"
-    echo   "=================================="
+    echo   "==============================================="
     exit
     ```
-
-    > In the future, you'll be able to SSH into the server and run this script to manually restart all of your Flask servers.
 
     For sanity, here's that file again, without all the comments:
 
@@ -269,11 +267,35 @@ _Here, we'll be setting up a server, fresh. It will be configured for a fake web
         printf "Live\n"
     fi
 
-    echo   "----------------------------------"
+    echo   "-----------------------------------------------"
     echo   "Deployment Complete"
-    echo   "=================================="
+    echo   "==============================================="
     exit
     ```
+
+    > In the future, you'll be able to SSH into the server and run this script to manually restart all of your Flask servers.
+    
+    > If you put the right number of spaces in the right places, the printout
+    > should look like this:
+    > 
+    > ```
+    > ===============================================
+    > Deployment Starting
+    > -----------------------------------------------
+    > Progress:
+    > Deploying mywebsite.com                   Done
+    > Deploying myotherwebsite.com              Done
+    > Deploying site.com                        Done
+    > -----------------------------------------------
+    > Status:
+    > mywebsite.com                             Live
+    > myotherwebsite.com                        Live
+    > site.com                                  Fail
+    > -----------------------------------------------
+    > Deployment Complete
+    > ===============================================
+    > ```
+    > 
 
 6. Now, if we were to push, we'd successfully be running the Flask app on localhost.  Next, we'll connect it to our domain name using Nginx. Create a new Nginx configuration file in `/etc/nginx/sites-available`:
     

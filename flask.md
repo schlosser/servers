@@ -107,10 +107,16 @@ _Here, we'll be setting up a server, fresh. It will be configured for a fake web
     ```bash
     #! /bin/bash
  
-    ~/bin/deploy.sh
+    ~/bin/deploy_all
     ```
 
-5. Now, create and edit `deploy.sh`. It will stop all running servers, then restart them all again.
+5. Now, create and edit `~/bin/deploy_all.sh`. It will stop all running servers, then restart them all again.
+    ```bash
+    my-website:~$ mkdir bin
+    my-website:~$ cd bin
+    my-website:~/bin$ touch deploy_all.sh
+    # Edit deploy_all.sh...
+    ```
 
     ```bash
     #! /bin/bash

@@ -21,7 +21,6 @@ And then, changing directory to the `/srv/` folder once you're on the server:
 my-website:~$ cd /srv/
 ```
 
-
 ## Important Directories / Files
 
 - **`/etc/nginx/`:** Everything related to Nginx configuration lives in this folder.
@@ -225,6 +224,56 @@ _Here, we'll be setting up a server, fresh. It will be configured for a fake web
     ```
 
     > In the future, you'll be able to SSH into the server and run this script to manually restart all of your Flask servers.
+
+    For sanity, here's that file again, without all the comments:
+
+    ```bash
+    #! /bin/bash
+
+    REPO_MYWEBSITE=~/git/mywebsite.com.git
+    PUBLIC_WWW_MYWEBSITE=/srv/mywebsite.com/www
+
+    pkill gunicorn
+
+    echo   "==============================================="
+    echo   "Deployment Starting"
+    echo   "-----------------------------------------------"
+    echo   "Progress:"
+    printf "Deploying mywebsite.com                  "
+
+    cd "$REPO_MYWEBSITE"
+    GIT_WORK_TREE=$PUBLIC_WWW_MYWEBSITE git checkout -f
+    cd "$PUBLIC_WWW_MYWEBSITE"
+
+    virtualenv -q .
+    source bin/activate
+    pip install -qr requirements.txt
+    pip install -q gunicorn
+    nohup \
+        gunicorn myapp:app \
+            -b 127.0.0.1:8001 \
+            --log-file ../logs/gunicorn.log \
+        nohup.out \
+        2>&1 < /dev/null \
+        &
+    deactivate
+
+    printf "Done\n"
+    echo   "-----------------------------------------------"
+    echo   "Status:"
+
+    printf "mywebsite.com                             "
+    if [[ -z "$(curl -Is http://mywebsite.com | head -1 | grep 200)" ]]; then
+        printf "Fail\n"
+    else
+        printf "Live\n"
+    fi
+
+    echo   "----------------------------------"
+    echo   "Deployment Complete"
+    echo   "=================================="
+    exit
+    ```
 
 6. Now, if we were to push, we'd successfully be running the Flask app on localhost.  Next, we'll connect it to our domain name using Nginx. Create a new Nginx configuration file in `/etc/nginx/sites-available`:
     
